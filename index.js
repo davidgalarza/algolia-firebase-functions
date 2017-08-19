@@ -25,6 +25,13 @@ const promisify = require('es6-promisify');
 const prepareObjectToExporting = (dataSnapshot) => {
   const object = dataSnapshot.val();
   object.objectID = dataSnapshot.key;
+  object.hola = "Que mas";
+  if(dataSnapshot.val().lat != undefined && dataSnapshot.val().lng != undefined){
+    object._geoloc = {
+      lat: dataSnapshot.val().lat,
+      lng: dataSnapshot.val().lng
+    };
+  }
   return object;
 };
 
